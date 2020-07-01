@@ -9,8 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace ePub\Exception;
+namespace Vibby\EPub\Definition;
 
-class DuplicateItemException extends \DomainException
+interface ItemInterface
 {
+    function getIdentifier();
 }

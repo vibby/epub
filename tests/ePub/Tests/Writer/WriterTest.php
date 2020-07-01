@@ -11,9 +11,9 @@
 
 namespace ePub\Tests\Writer;
 
-use ePub\Tests\BaseTest;
-use ePub\Reader;
-use ePub\Resource\Dumper\OpfResourceDumper;
+use Vibby\EPub\Tests\BaseTest;
+use Vibby\EPub\Reader;
+use Vibby\EPub\Resource\Dumper\OpfResourceDumper;
 
 class WriterTest extends BaseTest
 {

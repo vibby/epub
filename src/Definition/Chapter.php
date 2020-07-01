@@ -1,8 +1,6 @@
 <?php
 
-
-namespace ePub\Definition;
-
+namespace Vibby\EPub\Definition;
 
 class Chapter
 {

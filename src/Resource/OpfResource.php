@@ -9,21 +9,21 @@
  * file that was distributed with this source code.
  */
 
-namespace ePub\Resource;
+namespace Vibby\EPub\Resource;
 
 use SimpleXMLElement;
-use ePub\NamespaceRegistry;
-use ePub\Definition\Package;
-use ePub\Definition\Metadata;
-use ePub\Definition\MetadataItem;
-use ePub\Definition\Manifest;
-use ePub\Definition\ManifestItem;
-use ePub\Definition\Spine;
-use ePub\Definition\SpineItem;
-use ePub\Definition\Guide;
-use ePub\Definition\GuideItem;
-use ePub\Definition\Navigation;
-use ePub\Exception\InvalidArgumentException;
+use Vibby\EPub\NamespaceRegistry;
+use Vibby\EPub\Definition\Package;
+use Vibby\EPub\Definition\Metadata;
+use Vibby\EPub\Definition\MetadataItem;
+use Vibby\EPub\Definition\Manifest;
+use Vibby\EPub\Definition\ManifestItem;
+use Vibby\EPub\Definition\Spine;
+use Vibby\EPub\Definition\SpineItem;
+use Vibby\EPub\Definition\Guide;
+use Vibby\EPub\Definition\GuideItem;
+use Vibby\EPub\Definition\Navigation;
+use Vibby\EPub\Exception\InvalidArgumentException;
 
 
 class OpfResource

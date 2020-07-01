@@ -2,8 +2,8 @@
 
 require_once __DIR__.'/../bootstrap.php';
 
-use ePub\Reader;
-use ePub\Loader\ZipFileLoader;
+use Vibby\EPub\Reader;
+use Vibby\EPub\Loader\ZipFileLoader;
 
 $reader = new Reader();
 $epub   = $reader->load($argv[1]);

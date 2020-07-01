@@ -9,11 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace ePub\Definition;
+namespace Vibby\EPub\Definition;
 
-use ePub\Definition\MetadataItem;
-use ePub\Exception\InvalidArgumentException;
-use ePub\Exception\OutOfBoundsException;
+use Vibby\EPub\Exception\InvalidArgumentException;
+use Vibby\EPub\Exception\OutOfBoundsException;
 
 class Metadata extends Collection
 {

@@ -9,15 +9,8 @@
  * file that was distributed with this source code.
  */
 
-namespace ePub;
+namespace Vibby\EPub\Exception;
 
-class NamespaceRegistry
+class InvalidArgumentException extends \InvalidArgumentException
 {
-    const NAMESPACE_DC = "http://purl.org/dc/elements/1.1/";
-
-    const NAMESPACE_OPF = "http://www.idpf.org/2007/opf";
-
-    const PREFIX_DC = "dc";
-
-    const PREFIX_OPF = "opf";
 }

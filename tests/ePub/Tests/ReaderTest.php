@@ -11,8 +11,8 @@
 
 namespace ePub\Tests;
 
-use ePub\Tests\BaseTest;
-use ePub\Reader;
+use Vibby\EPub\Tests\BaseTest;
+use Vibby\EPub\Reader;
 
 class ReaderTest extends BaseTest
 {

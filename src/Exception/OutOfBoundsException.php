@@ -9,18 +9,8 @@
  * file that was distributed with this source code.
  */
 
-namespace ePub\Definition;
+namespace Vibby\EPub\Exception;
 
-class MetadataItem implements ItemInterface
+class OutOfBoundsException extends \OutOfBoundsException
 {
-    public $name;
-
-    public $value;
-
-    public $attributes = array();
-
-    public function getIdentifier()
-    {
-        return $this->name;
-    }
 }

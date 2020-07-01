@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace ePub\Writer;
+namespace Vibby\EPub\Writer;
 
-use ePub\Definition\Package;
-use ePub\Exception\DuplicateItemException;
-use ePub\Exception\InvalidArgumentException;
+use Vibby\EPub\Definition\Package;
+use Vibby\EPub\Exception\DuplicateItemException;
+use Vibby\EPub\Exception\InvalidArgumentException;
 
 class Writer
 {

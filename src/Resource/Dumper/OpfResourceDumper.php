@@ -9,19 +9,19 @@
  * file that was distributed with this source code.
  */
 
-namespace ePub\Resource\Dumper;
+namespace Vibby\EPub\Resource\Dumper;
 
-use ePub\Definition\Guide;
-use ePub\Definition\GuideItem;
-use ePub\Definition\Metadata;
-use ePub\Definition\Manifest;
-use ePub\Definition\ManifestItem;
-use ePub\Definition\Package;
-use ePub\Definition\Spine;
-use ePub\Exception\DuplicateItemException;
-use ePub\Exception\InvalidArgumentException;
-use ePub\Resource\OpfResource;
-use ePub\NamespaceRegistry;
+use Vibby\EPub\Definition\Guide;
+use Vibby\EPub\Definition\GuideItem;
+use Vibby\EPub\Definition\Metadata;
+use Vibby\EPub\Definition\Manifest;
+use Vibby\EPub\Definition\ManifestItem;
+use Vibby\EPub\Definition\Package;
+use Vibby\EPub\Definition\Spine;
+use Vibby\EPub\Exception\DuplicateItemException;
+use Vibby\EPub\Exception\InvalidArgumentException;
+use Vibby\EPub\Resource\OpfResource;
+use Vibby\EPub\NamespaceRegistry;
 
 class OpfResourceDumper
 {

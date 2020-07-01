@@ -9,21 +9,18 @@
  * file that was distributed with this source code.
  */
 
-namespace ePub;
+namespace Vibby\EPub\Definition;
 
-use ePub\Loader\ZipFileLoader;
-
-class Reader
+class MetadataItem implements ItemInterface
 {
-    private $loader;
+    public $name;
 
-    public function __construct()
-    {
-        $this->loader = new ZipFileLoader();
-    }
+    public $value;
 
-    public function load($file)
+    public $attributes = array();
+
+    public function getIdentifier()
     {
-        return $this->loader->load($file);
+        return $this->name;
     }
 }

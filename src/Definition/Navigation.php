@@ -1,10 +1,6 @@
 <?php
 
-
-namespace ePub\Definition;
-
-use ePub\Definition\Chapter;
-
+namespace Vibby\EPub\Definition;
 
 class Navigation
 {
@@ -13,7 +9,7 @@ class Navigation
     /**
      * Array of Chapters
      *
-     * @var array
+     * @var Chapter[]
      */
     public $chapters;
     

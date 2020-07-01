@@ -9,19 +9,19 @@
  * file that was distributed with this source code.
  */
 
-namespace ePub\Definition;
+namespace Vibby\EPub\Definition;
 
-use ePub\Definition\ItemInterface;
-
-class ManifestItem implements ItemInterface
+class SpineItem implements ItemInterface
 {
-    public $id;
-
     public $href;
 
-    public $type;
+    public $id;
 
-    public $fallback;
+    public $linear;
+
+    public $order;
+
+    public $type;
 
     private $content;
 

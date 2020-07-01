@@ -9,8 +9,8 @@
  * file that was distributed with this source code.
  */
 
-namespace ePub\Exception;
+namespace Vibby\EPub\Definition;
 
-class OutOfBoundsException extends \OutOfBoundsException
+class Guide extends Collection
 {
 }

@@ -9,12 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace ePub\Definition;
+namespace Vibby\EPub\Definition;
 
-use ePub\Definition\Metadata;
-use ePub\Definition\ManifestItem;
-use ePub\Exception\DuplicateItemException;
-use ePub\Exception\InvalidArgumentException;
+use Vibby\EPub\Exception\DuplicateItemException;
+use Vibby\EPub\Exception\InvalidArgumentException;
 
 class Manifest extends Collection
 {

@@ -9,11 +9,8 @@
  * file that was distributed with this source code.
  */
 
-namespace ePub\Definition;
+namespace Vibby\EPub\Exception;
 
-use ePub\Definition\Metadata;
-use ePub\Definition\ManifestItem;
-
-class Guide extends Collection
+class DuplicateItemException extends \DomainException
 {
 }

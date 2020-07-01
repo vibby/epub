@@ -9,21 +9,23 @@
  * file that was distributed with this source code.
  */
 
-namespace ePub\Definition;
+namespace Vibby\EPub\Definition;
 
-class GuideItem implements ItemInterface
+class ManifestItem implements ItemInterface
 {
+    public $id;
+
     public $href;
 
     public $type;
 
-    public $title;
+    public $fallback;
 
     private $content;
 
     public function getIdentifier()
     {
-        return $this->type;
+        return $this->id;
     }
 
     public function setContent($content)

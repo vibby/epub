@@ -2,7 +2,7 @@
 
 namespace ePub\Tests\Resource;
 
-use ePub\Tests\BaseTest;
+use Vibby\EPub\Tests\BaseTest;
 
 class NcxResourceTest extends BaseTest
 {

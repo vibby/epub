@@ -9,14 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace ePub\Loader;
+namespace Vibby\EPub\Loader;
 
-use ePub\Resource\ZipFileResource;
-use ePub\Resource\OpfResource;
-use ePub\Resource\NcxResource;
-use ePub\Definition\Manifest;
-use ePub\Definition\ManifestItem;
-use ePub\Definition\Metadata;
+use Vibby\EPub\Definition\Package;
+use Vibby\EPub\Resource\ZipFileResource;
+use Vibby\EPub\Resource\OpfResource;
+use Vibby\EPub\Resource\NcxResource;
 
 class ZipFileLoader
 {
@@ -25,9 +23,9 @@ class ZipFileLoader
      *
      * @param string $file
      *
-     * @return \ePub\Definition\Package
+     * @return Package
      */
-    public function load($file)
+    public function load($file): Package
     {
         $resource = new ZipFileResource($file);
 

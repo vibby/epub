@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace ePub\Resource;
+namespace Vibby\EPub\Resource;
 
 use ZipArchive;
 

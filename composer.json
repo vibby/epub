@@ -2,9 +2,12 @@
     "name": "vibby/epub",
     "license": "MIT",
     "require": {
-        "php": ">=5.3.2"
+        "php": ">=5.3.2",
+        "ext-simplexml": "*"
     },
     "autoload": {
-        "psr-0": { "ePub": "src/" }
+        "psr-4": {
+            "Vibby\\EPub\\": "src/"
+        }
     }
 }

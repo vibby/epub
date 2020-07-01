@@ -11,10 +11,10 @@
 
 namespace ePub\Tests\Resource;
 
-use ePub\Tests\BaseTest;
-use ePub\Resource\OpfResource;
-use ePub\Definition\Metadata;
-use ePub\Definition\Manifest;
+use Vibby\EPub\Tests\BaseTest;
+use Vibby\EPub\Resource\OpfResource;
+use Vibby\EPub\Definition\Metadata;
+use Vibby\EPub\Definition\Manifest;
 
 class OpfResourceTest extends BaseTest
 {

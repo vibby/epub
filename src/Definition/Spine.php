@@ -9,10 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace ePub\Definition;
-
-use ePub\Definition\Metadata;
-use ePub\Definition\ManifestItem;
+namespace Vibby\EPub\Definition;
 
 class Spine extends Collection
 {

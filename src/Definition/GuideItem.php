@@ -9,25 +9,21 @@
  * file that was distributed with this source code.
  */
 
-namespace ePub\Definition;
+namespace Vibby\EPub\Definition;
 
-class SpineItem implements ItemInterface
+class GuideItem implements ItemInterface
 {
     public $href;
 
-    public $id;
-
-    public $linear;
-
-    public $order;
-
     public $type;
+
+    public $title;
 
     private $content;
 
     public function getIdentifier()
     {
-        return $this->id;
+        return $this->type;
     }
 
     public function setContent($content)

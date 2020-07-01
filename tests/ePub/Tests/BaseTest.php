@@ -11,7 +11,7 @@
 
 namespace ePub\Tests;
 
-use ePub\Reader;
+use Vibby\EPub\Reader;
 
 abstract class BaseTest extends \PHPUnit_Framework_TestCase
 {

@@ -1,18 +1,16 @@
 <?php
 
-
-namespace ePub\Resource;
+namespace Vibby\EPub\Resource;
 
 use SimpleXMLElement;
-use ePub\Definition\Package;
-use ePub\Definition\Chapter;
-use ePub\Exception\InvalidArgumentException;
-
+use Vibby\EPub\Definition\Package;
+use Vibby\EPub\Definition\Chapter;
+use Vibby\EPub\Exception\InvalidArgumentException;
 
 class NcxResource
 {
     /**
-     * @var \SimpleXMLElement
+     * @var SimpleXMLElement
      */
     private $xml;
     
@@ -26,7 +24,7 @@ class NcxResource
     /**
      * Constructor
      *
-     * @param \SimpleXMLElement|string $data
+     * @param SimpleXMLElement|string $data
      * @throws InvalidArgumentException
      */
     public function __construct($data)
@@ -41,7 +39,6 @@ class NcxResource
         
         $this->namespaces = $this->xml->getNamespaces(true);
     }
-    
     
     /**
      * Processes the XML data and puts the data into a Package object
@@ -61,14 +58,12 @@ class NcxResource
         return $package;
     }
     
-    
     private function consumeNavMap($navMap, &$chapters)
     {
         foreach ($navMap->navPoint as $navPoint) {
             $chapters[] = $this->consumeNavPoint($navPoint);
         }
     }
-    
     
     private function consumeNavPoint($navPoint)
     {
@@ -80,5 +75,4 @@ class NcxResource
         
         return $chapter;
     }
-    
 }
