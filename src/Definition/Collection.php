@@ -13,7 +13,7 @@ namespace Vibby\EPub\Definition;
 
 abstract class Collection
 {
-    protected $items;
+    public $items;
 
     public function __construct()
     {

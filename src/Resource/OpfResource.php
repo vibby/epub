@@ -25,7 +25,6 @@ use Vibby\EPub\Definition\GuideItem;
 use Vibby\EPub\Definition\Navigation;
 use Vibby\EPub\Exception\InvalidArgumentException;
 
-
 class OpfResource
 {
     /**
@@ -51,7 +50,7 @@ class OpfResource
     {
         if ($data instanceof SimpleXMLElement) {
             $this->xml = $data;
-        } else if (is_string($data)) {
+        } elseif (is_string($data)) {
             $this->xml = new SimpleXMLElement($data);
         } else {
             throw new InvalidArgumentException(sprintf('Invalid data type for OpfResource'));
@@ -69,7 +68,7 @@ class OpfResource
      *
      * @return Package
      */
-    public function bind(Package $package = null)
+    public function bind(Package $package = null): Package
     {
         $package = $package ?: new Package();
         $xml     = $this->xml;

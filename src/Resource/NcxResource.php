@@ -54,7 +54,7 @@ class NcxResource
         $navMap = $this->xml->navMap;
         
         $this->consumeNavMap($navMap, $package->navigation->chapters);
-        
+
         return $package;
     }
     

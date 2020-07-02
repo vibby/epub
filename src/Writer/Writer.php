@@ -14,15 +14,19 @@ namespace Vibby\EPub\Writer;
 use Vibby\EPub\Definition\Package;
 use Vibby\EPub\Exception\DuplicateItemException;
 use Vibby\EPub\Exception\InvalidArgumentException;
+use Vibby\EPub\Resource\ZipFileResource;
 
 class Writer
 {
-	private $package;
-	
-	public function __construct(Package $package)
-	{
-		$this->package = $package;
-	}
-	
-	
+    private $package;
+    
+    public function __construct(Package $package)
+    {
+        $this->package = $package;
+    }
+
+    public function __toString(): string
+    {
+        new ZipFileResource();
+    }
 }

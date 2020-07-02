@@ -16,13 +16,14 @@ use ZipArchive;
 class ZipFileResource
 {
     private $zipFile;
-
     private $cwd;
+    private $zipFileName;
 
     public function __construct($file)
     {
-        $this->zipFile = new \ZipArchive();
+        $this->zipFileName = $file;
 
+        $this->zipFile = new ZipArchive();
         $this->zipFile->open($file);
     }
 
@@ -33,11 +34,24 @@ class ZipFileResource
 
     public function get($name)
     {
+        return $this->zipFile->getFromName($this->buildPath($name));
+    }
+
+    public function replaceNameFromString($name, $content): void
+    {
+        $name = $this->buildPath($name);
+        $this->zipFile->deleteName($name);
+        $this->zipFile->addFromString($name, $content);
+        $this->zipFile->close();
+    }
+
+    private function buildPath($name)
+    {
         if (null !== $this->cwd) {
             $name = $this->cwd . '/' . $name;
         }
 
-        return $this->zipFile->getFromName($name);
+        return $name;
     }
 
     public function getXML($name)
@@ -49,12 +63,17 @@ class ZipFileResource
     {
         $result = array();
 
-        for ($i = 0; $i < $this->zipFile->numFiles; $i++){
+        for ($i = 0; $i < $this->zipFile->numFiles; $i++) {
             $item = $this->zipFile->statIndex($i);
 
             $result[] = $item['name'];
         }
 
         return $result;
+    }
+
+    public function getZipFileName()
+    {
+        return $this->zipFileName;
     }
 }
