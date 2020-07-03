@@ -31,7 +31,7 @@ class NcxResource
     {
         if ($data instanceof SimpleXMLElement) {
             $this->xml = $data;
-        } else if (is_string($data)) {
+        } elseif (is_string($data)) {
             $this->xml = new SimpleXMLElement($data);
         } else {
             throw new InvalidArgumentException(sprintf('Invalid data type for NcxResource'));

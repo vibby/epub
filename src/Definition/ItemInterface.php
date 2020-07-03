@@ -13,5 +13,5 @@ namespace Vibby\EPub\Definition;
 
 interface ItemInterface
 {
-    function getIdentifier();
+    public function getIdentifier();
 }

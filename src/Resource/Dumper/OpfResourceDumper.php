@@ -25,19 +25,20 @@ use Vibby\EPub\NamespaceRegistry;
 
 class OpfResourceDumper
 {
-	private $package;
+    private $package;
 
-	public function __construct(Package $package)
-	{
-		$this->package = $package;
-	}
+    public function __construct(Package $package)
+    {
+        $this->package = $package;
+    }
 
-	public function dump(array $options = array())
-	{
-		$dom = new \DOMDocument('1.0');
-		$dom->formatOutput = true;
-		$dom->preserveWhiteSpace = false;
-		$dom->loadXML(<<<EOT
+    public function dump(array $options = array())
+    {
+        $dom = new \DOMDocument('1.0');
+        $dom->formatOutput = true;
+        $dom->preserveWhiteSpace = false;
+        $dom->loadXML(
+            <<<EOT
 <?xml version="1.0"?>
 <package
  	unique-identifier="dcidid"
@@ -48,102 +49,100 @@ class OpfResourceDumper
 	xmlns:opf="http://www.idpf.org/2007/opf"
 	version="2.0" />
 EOT
-		);
+        );
 
-		$package = $dom->firstChild;
+        $package = $dom->firstChild;
 
-		$metadata = $this->appendMetadataElement($dom, $this->package->metadata);
-		$manifest = $this->appendManifestElement($dom, $this->package->manifest);
-		$spine    = $this->appendSpineElement($dom, $this->package->spine);
+        $metadata = $this->appendMetadataElement($dom, $this->package->metadata);
+        $manifest = $this->appendManifestElement($dom, $this->package->manifest);
+        $spine    = $this->appendSpineElement($dom, $this->package->spine);
 
-		$package->appendChild($metadata);
-		$package->appendChild($manifest);
-		$package->appendChild($spine);
+        $package->appendChild($metadata);
+        $package->appendChild($manifest);
+        $package->appendChild($spine);
 
-		return $dom->saveXML();
-	}
+        return $dom->saveXML();
+    }
 
-	private function appendMetadataElement(\DOMDocument $document, Metadata $metadata)
-	{
-		$node = $document->createElement('metadata');
+    private function appendMetadataElement(\DOMDocument $document, Metadata $metadata)
+    {
+        $node = $document->createElement('metadata');
 
-		foreach ($metadata->all() as $items) {
-			foreach ($items as $item) {
-				// $child = $document->createElementNS(NamespaceRegistry::NAMESPACE_DC, $item->name, $item->value);
-				$child = $document->createElement(sprintf('%s:%s', NamespaceRegistry::PREFIX_DC, $item->name), $item->value);
-				
-				if ($item->name === 'identifier') {
-					$child->setAttribute('id', 'dcidid');
-				}
+        foreach ($metadata->all() as $items) {
+            foreach ($items as $item) {
+                // $child = $document->createElementNS(NamespaceRegistry::NAMESPACE_DC, $item->name, $item->value);
+                $child = $document->createElement(sprintf('%s:%s', NamespaceRegistry::PREFIX_DC, $item->name), $item->value);
+                
+                if ($item->name === 'identifier') {
+                    $child->setAttribute('id', 'dcidid');
+                }
 
-				foreach ($item->attributes as $attrName => $attrValue) {
-					// if (false !== $pos = strpos($attrName, ':')) {
-					// 	$nsPrefix = substr($attrName, 0, $pos);
-					// 	$attrName = substr($attrName, $pos + 1);
+                foreach ($item->attributes as $attrName => $attrValue) {
+                    // if (false !== $pos = strpos($attrName, ':')) {
+                    // 	$nsPrefix = substr($attrName, 0, $pos);
+                    // 	$attrName = substr($attrName, $pos + 1);
 
-					// 	$namespace = constant('ePub\NamespaceRegistry::NAMESPACE_' . strtoupper($nsPrefix));
+                    // 	$namespace = constant('ePub\NamespaceRegistry::NAMESPACE_' . strtoupper($nsPrefix));
 
-					// 	$child->setAttributeNS($namespace, $attrName, $attrValue);
-					// } else {
-						$child->setAttribute($attrName, $attrValue);
-					// }
-				}
+                    // 	$child->setAttributeNS($namespace, $attrName, $attrValue);
+                    // } else {
+                    $child->setAttribute($attrName, $attrValue);
+                    // }
+                }
 
-				$node->appendChild($child);
-			}
+                $node->appendChild($child);
+            }
+        }
 
+        return $node;
+    }
 
-		}
+    private function appendManifestElement(\DOMDocument $document, Manifest $manifest)
+    {
+        $node = $document->createElement('manifest');
 
-		return $node;
-	}
+        foreach ($manifest->all() as $item) {
+            // $child = $document->createElementNS(NamespaceRegistry::NAMESPACE_DC, $item->name, $item->value);
+            $child = $document->createElement('item');
 
-	private function appendManifestElement(\DOMDocument $document, Manifest $manifest)
-	{
-		$node = $document->createElement('manifest');
+            $child->setAttribute('id', $item->id);
+            $child->setAttribute('href', $item->href);
 
-		foreach ($manifest->all() as $item) {
-			// $child = $document->createElementNS(NamespaceRegistry::NAMESPACE_DC, $item->name, $item->value);
-			$child = $document->createElement('item');
+            if ($item->type) {
+                $child->setAttribute('media-type', $item->type);
+            }
 
-			$child->setAttribute('id', $item->id);
-			$child->setAttribute('href', $item->href);
+            if ($item->fallback) {
+                $child->setAttribute('fallback', $item->fallback);
+            }
 
-			if ($item->type) {
-				$child->setAttribute('media-type', $item->type);
-			}
+            $node->appendChild($child);
+        }
 
-			if ($item->fallback) {
-				$child->setAttribute('fallback', $item->fallback);
-			}
+        return $node;
+    }
 
-			$node->appendChild($child);
-		}
+    private function appendSpineElement(\DOMDocument $document, Spine $spine)
+    {
+        $node = $document->createElement('spine');
+        $node->setAttribute('toc', 'ncx');
 
-		return $node;
-	}
+        foreach ($spine->all() as $item) {
+            // $child = $document->createElementNS(NamespaceRegistry::NAMESPACE_DC, $item->name, $item->value);
+            $child = $document->createElement('itemref');
 
-	private function appendSpineElement(\DOMDocument $document, Spine $spine)
-	{
-		$node = $document->createElement('spine');
-		$node->setAttribute('toc', 'ncx');
+            $child->setAttribute('idref', $item->id);
 
-		foreach ($spine->all() as $item) {
-			// $child = $document->createElementNS(NamespaceRegistry::NAMESPACE_DC, $item->name, $item->value);
-			$child = $document->createElement('itemref');
+            $node->appendChild($child);
+        }
 
-			$child->setAttribute('idref', $item->id);
+        return $node;
+    }
 
-			$node->appendChild($child);
-		}
+    private function appendGuideElement(\DOMDocument $document, Guide $guide)
+    {
+        $node = $document->createElement('guide');
 
-		return $node;
-	}
-
-	private function appendGuideElement(\DOMDocument $document, Guide $guide)
-	{
-		$node = $document->createElement('guide');
-
-		return $node;
-	}
+        return $node;
+    }
 }
